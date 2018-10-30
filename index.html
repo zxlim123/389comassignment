@@ -1,0 +1,309 @@
+<html>
+    <head>
+
+        <script src="jquery.js"></script>
+        <script src="modal/jBox.js"></script>
+        <script src="modal/plugins/Confirm/jBox.Confirm.js"></script>
+        <title>Sticky Notes - Just popped up!</title>
+        <link href='font.css' rel='stylesheet' type='text/css'>
+        <link href='modal/jBox.css' rel='stylesheet' type='text/css'>
+        <link href='modal/plugins/Confirm/jBox.Confirm.css' rel='stylesheet' type='text/css'>
+        <link href='fa/css/font-awesome.css' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="menu/fg.menu.js"></script>
+        <script type="text/javascript" src="clipboard.min.js"></script>
+        <script type="text/javascript" src="TweenMax.min.js"></script>
+
+
+        <link href='switchery.css' rel='stylesheet' type='text/css'>
+        <link type="text/css" href="menu/fg.menu.css" media="screen" rel="stylesheet" />
+        <link type="text/css" href="menu/custom/jquery-ui.theme.css" media="screen" rel="stylesheet" />
+        <link type="text/css" href="test.css" media="screen" rel="stylesheet" />
+
+        </head>
+
+    <!--   If you are here, I need you! Shoot me a mail at ukivapps@gmail.com    -->
+
+    <body class="bc_yellow">
+    
+
+		<textarea id="txt"></textarea>
+
+<div id="progressBar" class="tiny-green"><div></div></div>
+
+<section id="percentage" style="display:none">
+    <article>
+      <div class="number-pb">
+        <div class="number-pb-shown dream"></div>
+        <div class="number-pb-num">0%</div>
+      </div>
+    </article>
+  </section>
+
+  <div id="light-notifications">
+        <div class="light-notifications-div" style="display:none" id="limit-crossed"> Disable sync to remove 4000 character limit.</div>
+        <div class="light-notifications-div" style="display:none" id="please-rate"> <a id="please-rate-link" target="_BLANK" href="https://chrome.google.com/webstore/detail/sticky-notes-just-popped/plpdjbappofmfbgdmhoaabefbobddchk/reviews" style="font-size: 10px;">Please click here & give us a 5 STAR Rating [x]</a></div>
+        <div class="light-notifications-div" style="display:none;margin-left: 2px;" id="please-share"><a id="please-share-link" target="_BLANK" href="https://www.facebook.com/sharer/sharer.php?u=https://chrome.google.com/webstore/detail/sticky-notes-just-popped/plpdjbappofmfbgdmhoaabefbobddchk" style="font-size: 10px;">Spread some <i class="fa fa-heart" style="opacity:1;font-size:12px;color:darkred;"></i>. Share about this app <i class="fa fa-facebook-square" style="opacity:1;font-size:12px;color:#4267b2;"></i></a></div>
+        <div class="light-notifications-div" style="display:none;margin-left: 2px;" id="please-donate"><a id="please-donate-link" target="_BLANK" href="https://donate.ukiv.com" style="font-size: 10px;">Really <i class="fa fa-heart" style="opacity:1;font-size:12px;color:darkred;"></i> this app? Consider donating <i class="fa fa-money" style="opacity:1;font-size:12px;color:#4267b2;"></i></a></div>
+        <div class="light-notifications-div" style="display:none" id="sync-complete"> note synced!</div>
+</div>
+
+<div id="rightMenu">
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="flat" style="font-weight:400"><span class=""></span><i class="fa fa-cog"></i></a>
+<div id="search-engines" class="hidden">
+<ul>
+    <li><a href="#" data-id="change_export_data"><img src="download.png" style="width: 19px;margin: -4px 2px -5px -3px;opacity:0.;display: none">Export note as .txt file<span class="newmenuitem"></span></a></li>
+    <hr style="border-style: ridge;margin: 0px;" />
+    <!-- <li><a href="panel.html" data-id="modal_panel" id="modal_panel_link"> <img src="panel2.gif" style="width: 40px;margin-top: -2px;margin-bottom: -8px;"> <span>Always on Top*</span></a></li> -->
+    <hr style="border-style: ridge;margin: 0px;" />
+    <li><a href="#" data-id="change_text_style">change <span>font</span><span class="newmenuitem"></span></a></li>
+    <li><a href="#" data-id="change_text_size">change <span>text size</span><span class="newmenuitem"></span></a></li>
+    <li><a href="#" data-id="change_popup_size">change window <span>size</span><span class="newmenuitem"></span></a></li>
+    <li><a href="#" data-id="change_background_color">choose&nbsp;<span>theme</span><span class="newmenuitem">(new)</span></a></li>
+    <hr style="border-style: ridge;margin: 0px;" />
+    <li><a href="#" data-id="modal_sync">multi-browser sync <div style="display:none" class="sync_menu_item_text">off</div><span class="newmenuitem syncwarningmenu"></span></a></li>
+    <li><a href="#" data-id="modal_help">Need new features<span></span>?</a></li>
+    <li><a href="#" data-id="modal_about">Love this awesome app?<span class="newmenuitem"></span></a></li>
+    <hr style="border-style: ridge;margin: 0px;" />
+    <!--<li style="background:#fddced;"><a href="#" data-id="modal_donate" target="_blank"><i class="fa fa-share-alt" style="opacity:1;font-size:16px;color: rgb(182, 56, 56);"></i> <span><u> Share this app</u></span><span class="newmenuitem">new</span></a></li>-->
+    <li style=";"><a href="#" data-id="modal_share" target="_blank"><i class="fa fa-facebook-square" style="opacity:1;font-size:16px;color:#4267b2;"></i> <span><u> Share <small>about this app</small></u></span></a></li>
+    <li style=";"><a href="#" data-id="modal_tweet" target="_blank"><i class="fa fa-twitter-square" style="opacity:1;font-size:16px;color:#1DA1F2;"></i> <span><u> Tweet <small>about this app</small></u></span></a></li>
+
+
+    <li style="background: rgb(236, 245, 218);"><a href="#" data-id="modal_donate" target="_blank"><i class="fa fa-money" style="opacity:1;font-size:16px;color: rgb(182, 56, 56);"></i> <span><u> Donate us</u></span><span class="newmenuitem">$$$</span></a></li>
+    <!-- <hr style="border-style: ridge;margin: 0px;" /> -->
+    <!-- <li class="popupmenuli"><a href="panel.html" data-id="modal_panel_bottom"><img src="external.png" style="width: 14px;margin-top: -2px;"> <span>pop out </span> in new window </a></li> -->
+    <!-- <li class="popupmenuli"><a href="#" data-id="modal_popout"><img src="external.png" style="width: 14px;margin-top: -2px;"> <span>pop out </span> in new window </a></li> -->
+    
+
+    <!-- <li><a href="#" data-id="modal_share"><span>share</span> the app on fb <span style="display: inline-block;position: relative;"><img src="smile1.gif" class="dynamic-smile" style="width: 21px;margin-top: -18px;position: absolute;top: 3px;"></span></a></li> -->
+    
+    
+    <!-- <li><a href="#" data-id="modal_coupons">apply coupons</a></li> -->
+    <!-- <li><a href="http://ukiv.com/" target="_BLANK" data-id="modal_site">visit our site</a></li> -->
+</ul>
+</div>
+</div>
+
+<div id="hidden_modals">
+
+
+    <div style="display: none" id="change_export_data" class="settings-modals">
+        <h3 style="width:170px;">** Export your note **</h3><br />
+        <ul id="change_export_data_ul">
+            <!-- <b style="margin-bottom: 7px;display: inline-block;">1).  Text file</b><br /> -->
+            <li data-id="ex_txt">a). notes.txt<br /></li>
+            <li data-id="ex_txtdate">b). notes_(DATE).txt</li>
+            <br /><br />
+            <li data-id="ex_print">print this note</li>
+             <br />
+             <!-- <b style="margin-bottom: 7px;display: inline-block;">2.   Pdf file</b> <small><small>(print enabled)</small></small><br />
+            <li data-id="ex_txt">-  snotes.pdf</li>
+            <li data-id="ex_txtdate">-  snotes_(DATE).pdf</li> -->
+        </ul>
+<!--         * you may have to re-open the popup to view the correct size. <br /><br />
+ -->        <div style="width: 100%;text-align: center;"><a class="modal-close" href="">Close</a></div>
+
+    </div>
+
+
+    <div style="display: none" id="change_popup_size" class="settings-modals">
+        <h3 style="width:170px;">Popup Size: </h3>
+        <ul id="change_popup_size_ul">
+            <li data-id="sz_tiny">tiny</li>
+            <li data-id="sz_standard">Standard<small></small></li>
+            <li data-id="sz_wide">Wide </li>
+            <li data-id="sz_swide">Wide - extra wide</li>
+            <li data-id="sz_long">Long</li>
+            <li data-id="sz_giant">Giant </li>
+            <li data-id="sz_ggiant">Giant - extra wide</li>
+        </ul>
+<!--         * you may have to re-open the popup to view the correct size. <br /><br />
+ -->        <div style="width: 100%;text-align: center;"><a class="modal-close" href="">Close</a></div>
+
+    </div>
+    <div style="display: none" id="change_text_size" class="settings-modals">
+        <h3 style="width:170px;">Text Size: </h3>
+        <ul id="change_text_size_ul">
+            <li data-id="ts_small">Small</li>
+            <li data-id="ts_medium">Medium</li>
+            <li data-id="ts_large">Large</li>
+            <li data-id="ts_extra">Extra Large</li>
+            <li data-id="ts_giant">Giant Large</li>
+            <li data-id="ts_super">Super Giant Large</li>
+        </ul>
+        <div style="width: 100%;text-align: center;"><a class="modal-close" href="">Close</a></div>
+
+
+    </div>
+    <div style="display: none" id="change_text_style" class="settings-modals">
+        <h3 style="width:170px;">Text Style: </h3>
+        <ul id="change_text_style_ul">
+            <li data-id="La Belle Aurore" style="font-family:La Belle Aurore">La Belle</li>
+            <li data-id="Zeyada" style="font-family:Zeyada">Zeyada</li>
+            <li data-id="Arvo" style="font-family:Arvo">Arvo</li>
+            <li data-id="Open Sans" style="font-family:Open Sans">Open Sans</li>
+            <li data-id="Kalam" style="font-family:Kalam">Kalam</li>
+            <li data-id="Yesteryear" style="font-family:Yesteryear">Yesteryear</li>
+             <li data-id="Comic Sans Ms" style="font-family:Comic Sans Ms">Comic</li>
+             <li data-id="Helvetica" style="font-family:Helvetica">Helvetica</li>
+        </ul>
+        <div style="width: 100%;text-align: center;"><a class="modal-close" href="">Close</a></div>
+
+    </div>
+    <div style="display: none" id="change_background_color" class="settings-modals">
+        <h3 style="width:170px;">Choose Theme: </h3>
+        <ul id="change_background_color_ul">
+            <li class="bc_valday" data-id="bc_valday">0. Valentine's Day</li>
+            <li class="bc_purple" data-id="bc_purple">1. Purple Haze</li>
+            <li class="bc_greenwood" data-id="bc_greenwood">2. Green Wood</li>
+            <li class="bc_matrix" data-id="bc_matrix">3. The Matrix</li>
+            <li class="bc_white" data-id="bc_white">4. White Cream</li>
+            <li class="bc_yellow" data-id="bc_yellow">5. Sand Stone</li>
+            <li class="bc_blue" data-id="bc_blue">6. Blue Sky</li>
+            <li class="bc_water" data-id="bc_water">7. Warm Water</li>
+            <li class="bc_pink" data-id="bc_pink">8. Pink Pepper</li>
+            <li class="bc_original" data-id="bc_original">9. Original Theme</li>
+        </ul>
+        <div style="width: 100%;text-align: center;"><a class="modal-close" href="">Close</a></div>
+        <!-- <br /><br /><small><b> Also, share on facebook:</b></small>
+         <a target="_BLANK" href="https://www.facebook.com/sharer/sharer.php?u=https://chrome.google.com/webstore/detail/sticky-notes-just-popped/plpdjbappofmfbgdmhoaabefbobddchk"> <img src="fb-share-button.png"> </a> -->
+    </div>
+    <div style="display: none" id="modal_share" class="settings-modals">
+        Share the <b>getstickynotes</b>.com on <a href="https://www.facebook.com" target="_BLANK"> facebook</a>!
+    </div>
+    <div style="display: none" id="modal_about" class="settings-modals">
+        <h3 style="width:170px;margin-bottom: 4px;">love this app?</h3>
+
+        <a href="https://chrome.google.com/webstore/detail/sticky-notes-just-popped/plpdjbappofmfbgdmhoaabefbobddchk/reviews" style="font-weight: 600;font-size:18px" class="link animated" target="_BLANK">
+            <small><u>Click here</u> & rate us </small> 5 stars</a>
+        <br /><br />
+
+        <a href="https://donate.ukiv.com" target="_blank"><h3>Donate $4 / $5  &nbsp;&nbsp;<i class="fa fa-money" style="opacity:0.8;font-size:16px;color: rgb(106, 156, 7);"></i></h3></a>
+
+        <small><b> Also, click below to share on facebook:</b></small>
+
+        <a target="_BLANK" href="https://www.facebook.com/sharer/sharer.php?u=https://chrome.google.com/webstore/detail/sticky-notes-just-popped/plpdjbappofmfbgdmhoaabefbobddchk"> <img src="facebook.png" style="width: 60%;"> </a>
+
+        <!-- @TODO -->
+        <!-- <br /><br /><br />Credits: <a class="link animated" href="https://www.ukiv.com/notes/" target="_BLANK">www.ukiv.com/notes</a> -->
+        <br />
+        <small> <u> last updated:  Jan 2018 </u></small>
+       <!--  <br /><small> * .</small> -->
+        <!-- <small><b>Visit Company's website: </b></small> <br /><a class="link animated" href="http://ukiv.com/" target="_BLANK">ukiv.com</a> -->
+       <!-- <br /><small style="font-family: monospace">Added Text styling, font size, background color options.</small> -->
+       <br /><br /> <div style="width: 100%;text-align: center;"><a class="modal-close" href="">Close</a></div>
+    </div>
+    <div style="display: none" id="modal_sync" class="settings-modals">
+        <span style="width:170px;font-size:20px">Syncing is <span class="sync-status" style="font-weight:600">DISABLED</span></span><br /><br />
+        
+        <span class="switch-is-here"><input type="checkbox" class="js-switch sync-status-switch"/></span>
+        <h4 style="margin-bottom:0px;">Use multiple chrome browsers?</h4>
+        Enable this option if you want to sync your notes between them.
+        <br />
+        <span style="  background: #F2BEBE;display: block;border-radius: 5px;padding: 4px 3px;">Some users have reported that sync is not working properly. You 'may' loose your changes at random times. This is a known bug of Google chrome sync. We are finding a workaround for it. Its recommended that you keep it disabled for now. </span>
+
+        <!-- <br /><br /><small style="color:#aaa"> * Since 8th August, Syncing has been <u>disabled by default</u> due to its 4,000 characters limit. You can enable that by clicking the toggle button above.</small> -->
+        <br /><br /><small style="color:#aaa"> * * Enable this option in all chrome browsers you want to sync between.</small>
+        <br /><br /><div style="width: 100%;text-align: center;"><a class="modal-close" href="#">Close</a></div>
+    </div>
+    <div style="display: none" id="modal_sync_confirm" class="settings-modals">
+        <span style="width:170px;font-size:24px">Are you <span id="sync-status-sure" style="font-weight:600">sure</span>?</span><br /><br />
+        
+        <!-- <h4 style="margin-bottom:0px;">Multiple Chrome Browsers?</h4> -->
+        <!-- <button onclick="myFunction()">Yes, ENABLE SYNC.</button> -->
+        <button id="enableSyncConfirmButton" class="enableSyncConfirmButton">Yes, ENABLE SYNC.</button>
+
+        <br /><br />
+        <span class="enableSyncConfirmButtonText">Note: Your note size will be limited to 4000 characters only.</span>
+
+        <!-- <br /><br /><small style="color:#aaa"> *  </small> -->
+        <!-- <br /><br /><small style="color:#aaa"> * * Enable this option in all chrome browsers you want to sync between.</small> -->
+        <br /><br /><div style="width: 100%;text-align: center;"><a class="modal-close" href="#">No, Cancel</a></div>
+    </div>
+    <div style="display: none" id="modal_sync_error" class="settings-modals">
+        <span style="width:170px;font-size:24px"><span id="sync-status-sure" style="font-weight:600">Sorry!</span></span><br /><br />
+        
+        <h4 style="margin-bottom:0px;">Cannot enable Sync.</h4>
+        <!-- <button onclick="myFunction()">Yes, ENABLE SYNC.</button> -->
+
+        <!-- <button id="enableSyncConfirmButton" class="enableSyncConfirmButton">Yes, ENABLE SYNC.</button> -->
+
+        <br />
+        <span class="enableSyncErrorButtonText">Unfortunately, your text should not contain more than 4000 characters. </span>
+
+        <!-- <br /><br /><small style="color:#aaa"> *  </small> -->
+        <!-- <br /><br /><small style="color:#aaa"> * * Enable this option in all chrome browsers you want to sync between.</small> -->
+        <br /><br /><div style="width: 100%;text-align: center;"><a class="modal-close" href="#">Okay  :-|</a></div>
+    </div>
+    <div style="display: none" id="modal_help" class="settings-modals">
+        <h3 style="width:170px;opacity:0.7">Ask for any feature?</h3>
+        
+        <h4 style="margin-bottom:0px;">Email me:</h4>
+        <a href="mailto:ukivapps@gmail.com" class="link animated">ukivapps@gmail.com</a> <small><button class="clipbtn" data-clipboard-text="ukivapps@gmail.com">Copy</button></small>
+        <br />
+        <h4 style="margin-bottom:0px;">Whatsapp me:</h4>
+        <a href="#" class="link animated"><img src="whatsapp.png" style="width:20px;height:20px;margin-bottom: -4px;" /> +919167479540</a>
+         <small><button class="clipbtn" data-clipboard-text="+919167479540">Copy</button></small>
+        <br /><br /><br />
+        <a href="https://donate.ukiv.com" target="_blank"><h3>Make me code faster <i class="fa fa-bolt" style="opacity:0.8;font-size:16px;color: rgb(106, 156, 7);"></i><i class="fa fa-bolt" style="opacity:0.8;font-size:16px;color: rgb(106, 156, 7);"></i></h3></a>
+        <!-- <br /><br /><small style="opacity:0.4"> Happy to help  <i class="fa fa-smile-o"></i> </small> -->
+        <!-- <h3 style="width:170px;">Apply coupons</h3> -->
+       <!--  <br />
+        <h5 style="margin-bottom:4px">I may whatsapp back some coupons to you, </h5>
+        <input type="text" value="enter them here"> -->
+        <br /><div style="width: 100%;text-align: center;"><a class="modal-close" href="">Close</a></div>
+    </div>
+   
+     <div style="display: none" id="modal_notification" class="settings-modals">
+        <h3 style="width:170px;">Attention Earthlings!</h3>
+        <!-- <h4 style="margin-bottom:0px;">Lets chat on WhatsApp!</h4> -->
+        <!-- <a href="#"><img src="whatsapp.png" style="width:20px;height:20px;margin-bottom: -4px;" /> +91 9167479540</a> -->
+        <small id="notification-string"> </small>
+        <!-- <h3 style="width:170px;">Apply coupons</h3> -->
+       <!--  <br />
+        <h5 style="margin-bottom:4px">I may whatsapp back some coupons to you, </h5>
+        <input type="text" value="enter them here"> -->
+        <br /><br /><div style="width: 100%;text-align: center;"><a class="modal-close" href="#">Okay!</a></div>
+    </div>
+    <div style="display: none" id="modal_choose_version" class="settings-modals">
+        <h3 style="width:170px;margin-bottom:0px;">Sorry to interrupt!</h3>
+        <h5 style="margin-top:0px;">Seems you recently changed this note from another computer.</h5>
+        
+        <div class="version-one versions">
+            <!-- <span class="choose-version-tag">From Server</span> -->
+            <span class="choose-version-button"> <button class="versions-chooser versions-chooser-one">Choose other computer's note.</button></span>
+            <pre class="text-version-one">
+
+            </pre>
+        </div>
+
+        <div class="version-two versions">
+             <!-- <span class="choose-version-tag">Your Note.</span> -->
+             <span class="choose-version-button"> <button class="versions-chooser versions-chooser-two">Choose this computer's note.</button></span>
+             <pre class="text-version-two">
+
+            </pre>
+        </div>
+        <small> to continue, please choose a version. <br /> <br />
+        <small> *Other version <b>will be DELETED</b>.</small>
+        </small> 
+      
+    </div>
+</div>
+
+        <div id="letter-wrapper">
+            <div id="fountain-top"></div>
+        </div>
+
+
+           <div>
+    </body>
+</html>
+
+<!-- 
+
+Are you a developer? Please reach out to me.
+
+ukivapps@gmail.com
+
+ -->
